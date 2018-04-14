@@ -1,0 +1,53 @@
+
+<!--END MODAL-->
+<%= simple_form_for @resource, :url => create_resource_admin_production_index_path , :method => :post,html: { id:'form-employee', class: 'form-horizontal',:method => :post }, wrapper: :horizontal_form,
+wrapper_mappings: {
+  check_boxes: :horizontal_radio_and_checkboxes,
+  radio_buttons: :horizontal_radio_and_checkboxes,
+  file: :horizontal_file_input,
+  boolean: :horizontal_boolean } do |f| %>
+  <%= f.error_notification %>
+  <div class="alert alert-danger" id="date_invalid" style="padding-bottom:10px" hidden>Data de nascimento inválida!</div>
+  <% if flash[:notice] %>
+     <div class="alert alert-success" id="js_success" style="padding-bottom:10px"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert] %>
+     <div class="alert alert-danger" style="padding-bottom:10px"><%= flash[:error] %></div>
+  <% end %>
+  <div class="panel">
+    <div class="panel-heading">
+      <span class="panel-title">Nova restrição</span>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.input :name, label:'Nome'%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.input :operation, label:'Operação', :collection=>["<=", ">=", "<", ">", "="], include_blank: false%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.input :quantity, as: :string, label:'Quantidade'%>
+        </div>
+      </div>
+
+       <div class="row" hidden>
+        <div class="col-md-9">
+          <%= f.input :product_id, as: :string, label:'ID', input_html:{value:params[:id]}%>
+        </div>
+      </div>
+
+      <div class="panel-footer text-right">
+        <%=link_to("Cancelar",  admin_production_index_path , {class: 'btn btn-danger'} )%>
+        <input type="submit" name="commit" value="Salvar" id="save-user-btn" class="btn btn-primary" data-disable-with="Salvar">      
+      </div>
+    </div>
+
+<% end %>

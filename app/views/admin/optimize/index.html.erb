@@ -1,0 +1,47 @@
+<div class="wrapper">
+  
+    <div class="row">
+      
+        <%@work.each_with_index do |work,index| %>
+          <div class="panel" style="padding-bottom: 20px;">
+            <div class="panel-heading">
+              <span class="panel-title">Detalhes da produção</span>
+            </div>
+            <div class="row" style="margin:20px;" >
+              <div class="col-md-4">
+                <div class="w3-card-4" style="background-color: #fff;">
+                  <header class="w3-container" style="background-color: #000;">
+                    <h1 style="font-size:18px;color:#fff;"><%=work.name%></h1>
+                  </header>
+
+                  <div class="w3-container" style="margin-top: 10px;background-color: #fff;">
+                    <p style="font-weight: bold">Funcionários</p>
+                    <hr>
+                    <%work.works.each do |employee|%>
+                      <%@employee = Employee.find(employee.employee_id)%>
+                      <p><%=@employee.name%>: </p>
+                      <p><%=employee.hour_per_unit%>h dedicadas neste produto</p>
+                      <p><%=@employee.work_hours%>h dedicadas por semana</p>
+                    <%end%>
+                  </div>
+                  
+                </div>
+              </div>
+              <%work.resources.each do |product|%>
+                  <div class="col-md-4" style="padding:30px;">
+                      <div class="w3-card-4 " style="width:92%;max-width:230px;background-color: #334F53 !important;color: #fff;">
+                          <div class="w3-hover-shadow w3-center" >
+                              <p><%=product.name%> <%=product.operation%> <%=product.quantity%></p>
+                          </div>
+                      </div>
+                  </div>
+              <%end%> 
+            </div> 
+
+          </div>
+        <%end%>
+      
+    </div>
+
+</div>
+

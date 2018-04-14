@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>OS</title>
+  <meta name="description" content="OS">
+  <meta name="author" content="LeoP">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= csrf_meta_tags %>
+
+  <!-- Font CSS (Via CDN) -->
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" type="text/css" href="/assets/skin/default_skin/css/theme.css">
+
+  <!-- Admin Forms CSS -->
+  <link rel="stylesheet" type="text/css" href="/assets/admin-tools/admin-forms/css/admin-forms.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" type="text/css" href="/assets/font-awesome/font-awesome.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body class="external-page external-alt sb-l-c sb-r-c" >
+
+<!-- Start: Main -->
+<div id="main" class="animated fadeIn" style="background: #334F53;">
+
+  <!-- Start: Content-Wrapper -->
+  <section id="content_wrapper">
+
+    <!-- Begin: Content -->
+    <section id="content">
+
+      <div class="admin-form theme-info mw500" id="login">
+
+        <!-- Login Logo -->
+        <div class="row table-layout mb20">
+          <img src="/assets/img_logo.png" class="center-block img-responsive">
+        </div>
+
+        <!-- User authentication -->
+        <%= yield %>
+
+      </div>
+
+    </section>
+    <!-- End: Content -->
+
+  </section>
+  <!-- End: Content-Wrapper -->
+
+</div>
+<!-- End: Main -->
+
+
+<!-- BEGIN: PAGE SCRIPTS -->
+
+<!-- END: PAGE SCRIPTS -->
+
+</body>
+
+</html>

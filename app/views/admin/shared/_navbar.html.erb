@@ -1,0 +1,30 @@
+<header class="navbar navbar-fixed-top" style="background-color: #334F53 !important">
+  <div class="navbar-branding">
+    <a class="navbar-brand" data-no-turbolink="true" href="<%= admin_root_path %>" style="font-size:30px;color:#fff;">OTIMEASY</a>
+  </div>
+
+  <ul class="nav navbar-nav navbar-right" >
+
+    <li class="dropdown menu-merge nav-menu">
+      <a href="#" class="dropdown-toggle fw600 name" data-toggle="dropdown" aria-expanded="true">
+        <i class="glyphicons glyphicons-user"></i>
+        <span class="pl5"><%=current_admin_user.email%> </span>
+        <span class="caret caret-tp"></span>
+      </a>
+
+      <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
+        <li class="list-group-item text-center">
+            <%= link_to(edit_admin_admin_user_path(current_admin_user.id)) do %>
+            <span class="fa fa-gear"></span> Configurações
+            <%end%>
+        </li>
+        <li class="dropdown-footer">
+          <%= button_to(destroy_admin_user_session_path, method: :delete, class: 'btn btn-link btn-block logout-btn') do %>
+            <span class="fa fa-power-off pr5"></span> Sair
+          <% end %>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</header>

@@ -1,0 +1,46 @@
+<!-- Login Panel/Form -->
+<div class="panel mt30 mb25">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+   
+    <div class="panel-body bg-light p25 pb15">
+
+      <!-- Divider -->
+      <div class="section-divider mv30">
+        <span>LOGIN</span>
+      </div>
+
+      <!-- E-mail Input -->
+      <div class="section">
+        <%= f.label :email, label:'E-mail', required: false, class:'field-label text-muted fs18 mb10' %>
+
+        <label for="email" class="field prepend-icon">
+          <input autofocus="autofocus" class="string optional gui-input" maxlength="255"  placeholder="Digite o e-mail" size="255" type="text" name="admin_user[email]" id="admin_user_email">
+          <label for="email" class="field-icon">
+            <i class="fa fa-user"></i>
+          </label>
+        </label>
+      </div>
+
+      <!-- Password Input -->
+      <div class="section">
+        <%= f.label :password, label:'Senha', required: false, class:'field-label text-muted fs18 mb10' %>
+
+        <label for="password" class="field prepend-icon">
+          <%= f.input_field :password, required: false, class:'gui-input', placeholder:'Digite a senha' %>
+          <label for="password" class="field-icon">
+            <i class="fa fa-lock"></i>
+          </label>
+        </label>
+
+      </div>
+    </div>
+
+    <div class="panel-footer clearfix">
+      <%= f.button :submit, 'Login', class:'button mr10 pull-right', style:"background-color:#9ACC77;color:#fff;"%>
+    </div>
+    
+
+  <% end %>
+
+</div>
+<%= render "admin_users/shared/links" %>

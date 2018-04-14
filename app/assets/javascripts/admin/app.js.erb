@@ -1,0 +1,88 @@
+/*
+ * Application-wide custom JavaScript
+ * ----------------------------------
+ */
+
+var appTimeouts;
+var autoRefreshData;
+var lastPollingTime;
+var notificationSound;
+
+var App = {
+  init: function () {
+
+
+
+    // Init AbsoluteAdmin Theme Core Javascript (IMPORTANT !!!)
+    Core.init();
+
+    // Set default options for SweetAlerts plugin (replacing default JS confirm windows)
+    App.setSweetAlertDefaults();
+
+    // Link data-href attribute to table rows on-click events
+    App.setupTableRowClickEvents();
+
+    // Setup tooltips
+    App.setupTooltips();
+
+
+
+  },
+
+  setSweetAlertDefaults: function () {
+    // Set default values for SweetAlert plugin (used as replacement for default JS confirm dialogs)
+
+    swal.setDefaults({
+      confirmButtonText: 'OK',
+      //confirmButtonColor: '#4b210d',
+      cancelButtonText: 'Cancelar'
+    });
+
+  },
+  setupTableRowClickEvents: function() {
+    // Attach click event to table rows with data-href attribute
+    $(document).on('click', '.table tr', function (e) {
+      if(e.target.nodeName != "A") { // if clicked element is not another link in the row
+        if($(this).data("href")) { // if row has a data-href attribute
+          var link = $(this).data('href');
+
+          // Go to link
+          if ($(this).data('ajax') == true) { // if data-ajax attribute is set to true
+            // Using Ajax
+            $.ajax({
+              method: 'GET',
+              url: link
+            });
+          }
+          else {
+            // NO Ajax
+            window.location.href = link;
+          }
+        }
+      }
+    });
+  },
+  setupTooltips: function () {
+    // Initialize tooltips in DataTable
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.datepicker').datepicker({
+     dateFormat: 'dd/mm/yy',
+     dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+     dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+     dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+     monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+     monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+     nextText: 'Próximo',
+     prevText: 'Anterior'
+    });
+    
+   
+  },
+  isEmpty: function (element) {
+    // General function to check if HTML element is empty: return true if empty
+    return !$.trim($(element).html()).length;
+  }
+};
+jQuery(document).ready(function () {
+  App.init();
+});

@@ -1,0 +1,87 @@
+<% content_for :topbar_left do %>
+  <ol class="breadcrumb">
+    <% content_for :topbar_right do %>
+        <%= link_to( new_admin_production_path, id: 'muscle-add-btn', class: 'btn btn-default btn-sm light fw600 ml10', style: " background-color: #9ACC77; color: #fff") do %>
+        <i class="fa fa-plus pr5"></i> Nova produção
+      <% end %>
+    <% end %>
+    <li class="crumb-active">
+      <span class="glyphicon glyphicon-user mr5"></span>
+      <a href="">Produções</a>
+
+
+      
+    </li>
+  </ol>
+<% end %>
+<% if flash[:notice] %>
+      <div class="alert alert-success" id="js_success" style="padding-bottom:10px"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger" style="padding-bottom:10px"><%= flash[:error] %></div>
+    <% end %>
+
+<%@work.each_with_index do |work,index| %>
+    
+  <div class="col-md-4">
+    
+    <div class="w3-card-4" style="background-color: #fff;">
+      <header class="w3-container" style="background-color: #000;">
+        <h1 style="font-size:18px;color:#fff;"><%=work.name%></h1>
+      </header>
+
+      <div class="w3-container" style="margin-top: 10px;background-color: #fff;">
+        <p><%=work.description%></p>
+        
+        <p><label>Lucro:</label> R$<%=work.net_profit%></p>
+      </div>
+      
+      <% @link = "/admin/production/" + work.id.to_s + "/show_details"%>
+      <div class="row box-func hidden " style="padding: 8px;">
+        <div class="col-lg-12" >Funcionários alocados para produção
+          <%= simple_form_for @works, :url => "/admin/production/employee_hour", :method => :post,html: { id:'form-employee', class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: {
+              check_boxes: :horizontal_radio_and_checkboxes,
+              radio_buttons: :horizontal_radio_and_checkboxes,
+              file: :horizontal_file_input,
+              boolean: :horizontal_boolean } do |f| %>
+            <input type="text" name="products" class="product_id hidden" value="<%=work.id%>">
+
+            <%= select_tag "employees", options_for_select(@employees), id:"employees", style:"width:100% !important", class: "form-control multiple-select",multiple: true, :require=>true%>    
+            <input type="submit" name="commit" value="Salvar" style="margin-top: 10px;width: 100%;background-color: #9ACC77; color:#fff;" class="btn btn-primary" data-disable-with="Salvar">
+          <%end%>
+        </div>
+      </div>
+      
+      <button class="w3-button w3-block opt-func" style="background-color: #334F53;color:#fff;" href='<%=@link%>' >Adicionar funcionários</button>
+      <hr style="margin:0 !important;">
+
+      <div class="row box-rec hidden" style="padding: 8px;">
+        <div class="col-lg-12" >Recursos alocados para produção
+          <%= simple_form_for @resource, :url => create_resource_admin_production_index_path , :method => :post,html: { id:'form-employee', class: 'form-horizontal',:method => :post }, wrapper: :horizontal_form, wrapper_mappings: {
+          check_boxes: :horizontal_radio_and_checkboxes,
+          radio_buttons: :horizontal_radio_and_checkboxes,
+          file: :horizontal_file_input,
+          boolean: :horizontal_boolean } do |f| %>
+            <div class="col-md-12">
+              <%= select_tag "name", options_for_select(@resources), style:"width:100% !important", class: "form-control",multiple: false, :require=>true%>
+            </div>
+            <input type="text" name="products" class="product_id hidden" value="<%=work.id%>">
+            <div class="col-md-12" style="font-size: 12px; margin-top: 10px;">
+              <%= f.input :quantity, as: :string, label:'Quantidade', input_html:{value:"0"}%>
+              <div class="hidden">
+                <%= f.input :product_id, as: :string, label:'Product id', input_html:{value:work.id, class: "hidden"}%>
+              </div>  
+            </div>
+            <input type="submit" name="commit" value="Salvar" style="margin-top: 10px;width: 100%;background-color: #9ACC77; color:#fff;" class="btn btn-primary" data-disable-with="Salvar">
+          <%end%>
+        </div>
+      </div>
+      
+      <button class="w3-button w3-block opt-rec " style="background-color: #334F53;color:#fff;" >Adicionar restrições</button>
+      <hr style="margin:0 !important;">
+      <a class="w3-button w3-block " style="background-color: #334F53;color:#fff;" href='<%=@link%>' >Ver mais</a>
+    </div>
+  </div>  
+
+  
+<%end%>

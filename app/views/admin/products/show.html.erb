@@ -1,0 +1,28 @@
+<div class="panel">
+  <div class="panel-heading">
+    <span class="panel-title">Detalhes do produto</span>
+  </div>
+  <div class='admin-form theme-primary'>
+    <div class="panel-body">
+      <div class="col-md-4">
+       
+      <div class="col-md-5">
+        <div class="col-md-12 mb10">
+          <b>Nome</b><br>
+            <%= @product.name %>
+          </div>
+        <div class="col-md-12 mb10">
+          <b>Lucro</b><br>
+            R$<%= @product.net_profit %>
+        </div>   
+        <div class="col-md-12 mb10">
+          <b>Descrição</b><br>
+            <%= @product.description %>
+        </div>   
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+

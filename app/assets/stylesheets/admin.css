@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ * ---
+ * NOTE: The AbsoluteAdmin theme CSS files that are referenced below are located in the folder
+ * vendor/assets/theme located in the root (and can be referenced using a relative path).
+ * ---
+ *
+ *= require admin-tools/admin-forms/css/admin-forms.min
+ *= require skin/default_skin/css/theme
+ *= require admindesigns/admindesigns
+  *= require glyphicons/glyphicons
+ *= require glyphicons-pro/glyphicons-pro
+ *= require icomoon/icomoon
+ *= require octicons/octicons
+ *= require font-awesome/font-awesome
+ *= require iconsweets/iconsweets
+ *= require plugins/datatables/media/css/dataTables.bootstrap
+ *= require plugins/magnific/magnific-popup
+ *= require plugins/select2/css/core
+ *= require sweetalert/dist/sweetalert
+ *= require ./admin/app
+ */
+
+#topbar{
+	background-color: #E5EAD4 !important;
+
+}
+
+.navbar{
+  box-shadow: none !important;
+}
+
+#sidebar_left.sidebar-light .sidebar-menu > li > a > span:nth-child(2) {
+  color: #fff !important;
+}
+
+body.sb-l-o #sidebar_left .sidebar-menu li > a:hover, body.sb-l-m #sidebar_left .sidebar-menu li > a:hover, body.sb-l-c #sidebar_left .sidebar-menu li > a:hover {
+    background: #9ACC77;
+    color: #fff !important;
+}
+
+header {
+    background: #45936C !important;
+}
+
+.btn-show-green{
+  background-color: #9ACC77;
+  color:#fff !important;
+}
+
+.label-line{
+  color: #9ACC77 !important; 
+  margin-bottom: 0px !important; 
+  margin-top: 0px !important;
+  border-top: 1px solid #E5EAD4;
+}
+
+.thead-inverse th {
+    color: #fff;
+    background-color: #292b2c;
+}
+
+tr{
+  border: 10;
+  border-color: #cacaca;
+}
+
+hr{
+  margin: 2px !important;
+}
+
+.box-sidebar{
+  background-color: #9ACC77 !important;
+
+}
+
+.label-sidebar{
+  color: #1F0A1D !important;
+
+}

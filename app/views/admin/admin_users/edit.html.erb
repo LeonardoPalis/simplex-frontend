@@ -1,0 +1,26 @@
+<% content_for :topbar_left do %>
+  <ol class="breadcrumb">
+    <li class="crumb-active">
+      <span class="glyphicons glyphicons-user mr5"></span>
+      <a href="">Configurações</a>
+    </li>
+  </ol>
+<% end %>
+
+<% content_for :topbar_right do %>
+  <%= link_to(admin_home_index_path, id: 'user-cancel-btn', class: 'btn btn-default btn-sm light fw600 ml10') do %>
+    Cancelar
+  <% end %>
+  <%= submit_tag('Salvar', form: 'admin-user-form', id: 'admin-user-save-btn', class:'btn btn-success btn-sm light fw600 ml10') %>
+<% end %>
+
+<div class="panel">
+  <div class="panel-heading">
+    <span class="panel-title">Alterar senha</span>
+  </div>
+  <div class="panel-body">
+
+    <%= render 'form' %>
+
+  </div>
+</div>

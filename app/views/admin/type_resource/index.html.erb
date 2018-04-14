@@ -1,0 +1,38 @@
+<% content_for :topbar_left do %>
+  <ol class="breadcrumb">
+    <% content_for :topbar_right do %>
+        <%= link_to(  new_admin_type_resource_path , id: 'muscle-add-btn', class: 'btn btn-default btn-sm light fw600 ml10', style: " background-color: #18BC9C; color: #fff") do %>
+        <i class="fa fa-plus pr5"></i> Novo recurso
+      <% end %>
+    <% end %>
+    <li class="crumb-active">
+      <span class="glyphicon glyphicon-user mr5"></span>
+      <a href="">Recursos</a>
+      
+    </li>
+  </ol>
+<% end %>
+
+<% if flash[:notice] %>
+     <div class="alert alert-success" id="js_success" style="padding-bottom:10px"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert] %>
+     <div class="alert alert-danger" style="padding-bottom:10px"><%= flash[:error] %></div>
+  <% end %>
+
+<div class="panel">
+  <div class="panel-body">
+   <table class="table table-hover" id="type-table" data-source="<%= set_datatable_type_resources_admin_type_resource_index_path(format: :json) %>"
+        cellspacing="0" width="100%">
+        <thead>        
+          <tr>
+            <th>Nome</th>
+            <th>Disponibilidade</th>
+            <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+  </div>
+</div>

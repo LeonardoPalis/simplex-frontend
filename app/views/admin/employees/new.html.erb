@@ -1,0 +1,46 @@
+
+<!--END MODAL-->
+<%= simple_form_for @employee, :url => "/admin/employees", :method => :post,html: { id:'form-employee', class: 'form-horizontal',:method => :post }, wrapper: :horizontal_form,
+wrapper_mappings: {
+  check_boxes: :horizontal_radio_and_checkboxes,
+  radio_buttons: :horizontal_radio_and_checkboxes,
+  file: :horizontal_file_input,
+  boolean: :horizontal_boolean } do |f| %>
+  <%= f.error_notification %>
+  <div class="alert alert-danger" id="date_invalid" style="padding-bottom:10px" hidden>Data de nascimento inválida!</div>
+  <% if flash[:notice] %>
+     <div class="alert alert-success" id="js_success" style="padding-bottom:10px"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:alert] %>
+     <div class="alert alert-danger" style="padding-bottom:10px"><%= flash[:error] %></div>
+  <% end %>
+  <div class="panel">
+    <div class="panel-heading">
+      <span class="panel-title">Novo funcionário</span>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.input :name, label:'Nome'%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.input :email, label:'E-mail'%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.input :work_hours, as: :string, label:'Horas semanais'%>
+        </div>
+      </div>
+
+      <div class="panel-footer text-right">
+        <input type="submit" name="commit" value="Salvar" id="save-user-btn" class="btn btn-primary" data-disable-with="Salvar">      
+      </div>
+    </div>
+
+<% end %>

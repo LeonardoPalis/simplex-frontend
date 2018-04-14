@@ -1,0 +1,84 @@
+<aside id="sidebar_left" class="affix sidebar-light nano" style="background-color: #1F0A1D;">
+
+  <!-- Start: Sidebar Left Content -->
+  <div class="sidebar-left-content nano-content">
+
+    <!-- Start: Sidebar Left Menu -->
+    <ul class="nav sidebar-menu">
+      
+
+      <%if current_admin_user%>
+      <li class="<% if controller_name == 'home' %>box-sidebar<% end %>">
+        <%= link_to( admin_home_index_path ) do %>
+          <span class="glyphicon glyphicon-home"></span>
+          <span class="sidebar-title">Home</span>
+
+          <span class="sidebar-title-tray" id="">
+           
+          </span>
+        <% end %>
+      </li>
+      <hr class="label-line"></hr>
+      <li class="<% if controller_name == 'employees' %>box-sidebar<% end %>">
+        <%= link_to(admin_employees_path) do %>
+          <span class="<% if controller_name == 'employees' %>label-sidebar<% end %>" style="font-size: 16px;font-weight: bold;">1º</span>
+          <span class="sidebar-title">Funcionários</span>
+
+          <span class="sidebar-title-tray" id="">
+           
+          </span>
+        <% end %>
+      </li> 
+      
+      <li class="<% if controller_name == 'products' %>box-sidebar<% end %>">
+        <%= link_to(admin_products_path) do %>
+          <span class="<% if controller_name == 'products' %>label-sidebar<% end %>" style="font-size: 16px;font-weight: bold;">2º</span>
+          <span class="sidebar-title">Produtos</span>
+
+          <span class="sidebar-title-tray" id="">
+           
+          </span>
+        <% end %>
+      </li>    
+
+      <li class="<% if controller_name == 'type_resource' %>box-sidebar<% end %>">
+        <%= link_to( admin_type_resource_index_path ) do %>
+          <span class="<% if controller_name == 'type_resource' %>label-sidebar<% end %>" style="font-size: 16px;font-weight: bold;">3º</span>
+          <span class="sidebar-title">Recursos</span>
+
+          <span class="sidebar-title-tray" id="">
+           
+          </span>
+        <% end %>
+      </li>  
+      
+      <li class="<% if controller_name == 'production' %>box-sidebar<% end %>">
+        <%= link_to(admin_production_index_path) do %>
+          <span class="<% if controller_name == 'production' %>label-sidebar<% end %>" style="font-size: 16px;font-weight: bold;">4º</span>
+          <span class="sidebar-title">Produção</span>
+
+          <span class="sidebar-title-tray" id="">
+           
+          </span>
+        <% end %>
+      </li>    
+      
+      <li class="<% if controller_name == 'optimize' %>box-sidebar<% end %>">
+        <%= link_to( admin_optimize_index_path ) do %>
+          <span class="<% if controller_name == 'optimize' %>label-sidebar<% end %>" style="font-size: 16px;font-weight: bold;">5º</span>
+          <span class="sidebar-title">Otimizar produção</span>
+
+          <span class="sidebar-title-tray" id="">
+           
+          </span>
+        <% end %>
+      </li>    
+      <%end%>
+    </ul>
+    <!-- End: Sidebar Menu -->
+
+  </div>
+  <!-- End: Sidebar Left Content -->
+
+</aside>
+<!-- End: Sidebar Left -->

@@ -1,0 +1,84 @@
+<% content_for :topbar_left, style:"background-color: #18BC9C" do %>
+  <ol class="breadcrumb">
+    <li class="crumb-active">
+      <span class="glyphicon glyphicon-user mr5"></span>
+      <a href="">Detalhes do produto</a>
+      
+    </li>
+  </ol>
+<% end %>
+
+    <div class="card hovercard"  style="background-color: #1F0A1D">
+        <div class="card-background">
+            <img class="card-bkimg" alt="" >
+            <!-- http://lorempixel.com/850/280/people/9/ -->
+        </div>
+        <div class="useravatar">
+            <img alt="" src="/assets/company.png">
+        </div>
+        <div class="card-info"> <span class="card-title" style="background-color: #1F0A1D;color:#E5EAD4"><%=@product.name%></span>
+
+        </div>
+    </div>
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" id="stars" class="btn btn-show-green" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <div class="hidden-xs">Funcionários</div>
+            </button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" id="favorites" class="btn btn-default" href="#tab2" data-toggle="tab"><span class="fa fa-gear" aria-hidden="true"></span>
+                <div class="hidden-xs">Restrições</div>
+            </button>
+        </div>
+        
+    </div>
+
+        
+    <div class="panel">
+      <div class="row">
+        <div class="container">
+          <div class="tab-content">
+            <div class="tab-pane fade in active"  id="tab1">
+              <%@employees.each do |employee|%>
+                  <%@emp = Employee.find(employee.employee_id)%>
+                  <div class="col-md-4" style="padding:30px;">
+                      <div class="w3-card-4 " style="width:92%;max-width:230px;">
+                          <img src="/assets/img_avatar.png" alt="Avatar" style="width:100%;opacity:0.85">
+                          <div class="w3-container">
+                          <h4><b><%=@emp.name%></b></h4>    
+                          <p><label>Horas semanais:</label> <%=@emp.work_hours%></p> 
+                          <p><label>Horas nesse produto:</label> <%=employee.hour_per_unit%></p>   
+                          </div>
+                       </div>
+                   </div>
+                 
+               <%end%>
+            </div>
+            <div class="tab-pane fade in" id="tab2">
+                <div class="panel">
+                  <div class="panel-body">
+                  <
+                   <table class="table table-hover" id="rest-table" data-source="<%= set_datatable_resource_admin_production_index_path(product_id: params[:id],format: :json) %>"
+                        cellspacing="0" width="100%">
+                        <thead>        
+                          <tr>
+                            <th>Nome</th>
+                            <th>Quantidade</th>
+                            <th>Disponibilidade</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                        </table>
+                  </div>
+                </div>
+
+            </div>
+       </div>
+    </div>
+    
+    
+  
+            
+    

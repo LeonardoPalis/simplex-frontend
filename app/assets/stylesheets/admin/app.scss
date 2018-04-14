@@ -1,0 +1,251 @@
+/*
+ * Custom District SASS styles
+ * -------------------------------
+ */
+
+/* VARIABLES */
+
+.section-divider {
+    height: 0;
+    border-top: 1px solid #DDD;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.section-divider span {
+    display: inline-block;
+    position: relative;
+    padding: 0 17px;
+    background: #fff;
+    color: #116787;
+    top: -11px;
+    font-size: 15px;
+}
+.no-decoration{
+  text-decoration: none !important;
+}
+
+.no-decoraation:hover{
+  text-decoration: none !important;
+}
+
+$primary-color: #373A3F;
+$danger-color: #df5640;
+$sidebar-bg-color: #dddddd;
+$white: #fff;
+$nav-link-hover-bg:#fff;
+$nav-link:#01B26E;
+/* GENERAL */
+
+// Action links that only consist of an icon (no surrounding button element)
+.icon-action-link {
+  color: #999;
+
+  &:hover {
+    color: #666;
+  }
+}
+
+.danger-link {
+  &:hover {
+    color: $danger-color;
+  }
+  &:active, &:focus {
+    color:#999;
+  }
+}
+
+
+.no-padding{
+  padding: 0px !important;
+}
+
+.bootstrap-select.btn-group .dropdown-menu {
+        z-index: 20000;
+}
+
+.dropdown-header{
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+body {
+  min-height: inherit;
+}
+.navbar{
+      background-color:$primary-color;
+
+    }
+
+.name{
+  color:#f5f5f5 !important;
+}
+.name:hover{
+  color:#000 !important;
+}
+.name:focus{
+  color:#000 !important;
+}
+.nav-menu:hover{
+  background-color: $nav-link !important;
+}
+#toggle_sidemenu_l{
+  color: $white;
+}
+// Action links that only consist of an icon (no surrounding button element)
+.icon-action-link {
+  color: #999;
+
+  &:hover {
+    color: #666;
+  }
+}
+
+.danger-link {
+  &:hover {
+    color: $danger-color;
+  }
+  &:active, &:focus {
+    color:#999;
+  }
+}
+
+
+/* NAVBAR */
+
+.navbar-branding {
+  .navbar-brand {
+    background-image: url('/assets/logo_na_estrada_Admin.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin-left: 18px;
+    padding-left: 0;
+    width: 170px;
+  }
+}
+
+.logout-btn {
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    background-color: #FFFEF0;
+  }
+}
+
+/* SIDEBAR */
+
+.sidebar-menu {
+  .sidebar-title {
+    font-weight: 600;
+  }
+}
+.side-bar-fix {
+    position: fixed !important;
+}
+/* SIDEBAR */
+
+// Open, minified and closed sidebar
+body.sb-l-o, body.sb-l-m, body.sb-l-c {
+  #sidebar_left {
+    //color: #666;
+    //background-color: $sidebar-bg-color;
+
+    .sidebar-menu {
+      // menu-item
+      li > a > span.sidebar-title {
+        font-weight: 600;
+      }
+      li > a:hover {
+        background: #eee;
+        color: $primary-color !important;
+      }
+      // active menu-item
+      li.active > a > span:nth-child(1),
+      li.active > a > span.sidebar-title,
+      ul.sub-nav > li.active > a {
+        color: $primary-color;
+      }
+
+      // sub-menu-item
+      li > ul {
+
+      }
+    }
+  }
+}
+
+// Minified sidebar
+body.sb-l-m {
+  #sidebar_left.sidebar-fix {
+    position: fixed;
+
+    .sidebar-menu ul.sub-nav {
+      .badge {
+        display: none;
+      }
+    }
+  }
+}
+
+/* FORMS */
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: #eee;
+  color: #999;
+}
+
+/* TABLES */
+
+.table {
+  margin-top: 6px;
+
+  thead tr {
+    border-bottom: #ccc;
+  }
+
+  td.table-empty, td.table-empty:hover {
+    background: #fff;
+    padding: 25px;
+  }
+
+  // Give table rows with a data-href attribute a mouse pointer on hover
+  tbody tr[data-href] {
+    cursor: pointer;
+  }
+}
+
+// Truncate text to fit table column
+.truncate-text {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; // truncate text on overflow
+}
+
+/* DATATABLES */
+
+table.dataTable {
+  // Empty datatable
+  td.dataTables_empty, th.sorting_disabled {
+    background: #fff !important;
+  }
+
+  tbody tr {
+    &:hover {
+      cursor: pointer; // Show click hand on hover row in DataTable
+    }
+  }
+}
+
+// Processing message
+div.dataTables_processing {
+
+}
+
+/* MODALS */
+.popup-large {
+  max-width: 850px;
+}
+
+
+.navbar .nav > li > a {
+    color: #fff;
+}

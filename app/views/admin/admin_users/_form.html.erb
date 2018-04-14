@@ -1,0 +1,16 @@
+
+<%= simple_form_for [:admin, @admin_user], html: { id:'admin-user-form', class: 'form-horizontal' }, wrapper: :horizontal_form,
+wrapper_mappings: {
+  check_boxes: :horizontal_radio_and_checkboxes,
+  radio_buttons: :horizontal_radio_and_checkboxes,
+  file: :horizontal_file_input,
+  boolean: :horizontal_boolean } do |f| %>
+  <div class="row">
+    <div class="col-md-9">
+   
+      <%= f.input :password,:placeholder=>"Senha", :label=>"Senha" %>
+      <%= f.input :password_confirmation,:placeholder=>"Confirmar Senha", :label=>"Confirmar Senha" %>
+    </div>
+  </div>
+
+  <% end %>

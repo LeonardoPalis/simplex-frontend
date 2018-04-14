@@ -1,0 +1,60 @@
+ <div class="wrapper">
+  <div class="panel">
+    <div class="panel-heading">
+      <span class="panel-title">Produção do produto <%=Product.find(params[:products]).name%></span>
+    </div>
+  </div>
+
+  <%params[:employees].each_with_index do |employee_id,index| %>
+
+    <!--END MODAL-->
+    <%= simple_form_for @work, :url => "/admin/production/create_work", data:{id: index},:method => :post,html: { id:index, class: 'form-horizontal',:method => :post }, wrapper: :horizontal_form,
+    wrapper_mappings: {
+      check_boxes: :horizontal_radio_and_checkboxes,
+      radio_buttons: :horizontal_radio_and_checkboxes,
+      file: :horizontal_file_input,
+      boolean: :horizontal_boolean } do |f| %>
+      <%= f.error_notification %>
+      <% if flash[:notice] %>
+         <div class="alert alert-success" id="js_success" style="padding-bottom:10px"><%= flash[:notice] %></div>
+      <% end %>
+      <div class="alert alert-danger" id="js_error" style="padding-bottom:10px" hidden></div>
+      <% if flash[:alert] %>
+         <div class="alert alert-danger" style="padding-bottom:10px"><%= flash[:alert] %></div>
+      <% end %>
+          
+      <%@emp = Employee.find(employee_id)%>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="alert alert-success hidden" id="js_success-<%=index%>" style="padding-bottom:10px">Salvo com sucesso!</div>
+          <div class="alert alert-danger hidden" id="js_error-<%=index%>" style="padding-bottom:10px">Verifique os campos em vermelho.</div>
+          <div class="row">
+            <div class="col-md-2">
+              <label><%=@emp.name%></label>
+            </div>
+            <div class="col-md-5">
+               <%= f.input :hour_per_unit, as: :string, label:"Horas gastas por unidade", input_html:{class:"hour_per_unit", value:"0"}%>
+               <div class="hidden">
+               <%= f.input :label_id, as: :string, label:" ", input_html:{value: index }%>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="hidden">
+               <%= f.input :product_id, as: :string, label:" ", input_html:{value: params[:products] }%>
+               <%= f.input :employee_id, as: :string, label:" ", input_html:{value: params[:employees][index]}%>
+          </div>
+        </div>
+        <div class="panel-footer text-right">
+          <input type="button" name="commit" value="Cancelar" id="save-user-btn-<%=index%>" class="btn btn-danger" data-disable-with="Salvar">  
+          <input type="button" name="commit" value="Salvar" id="save-user-btn-<%=index%>" class="btn btn-primary btn-submit" data-disable-with="Salvar">  
+        </div>
+      </div>
+    <%end%>
+    </div>
+  <% end %>
+
+
+</div>
+

@@ -1,0 +1,32 @@
+<% content_for :topbar_left, style:"background-color: #18BC9C" do %>
+  <ol class="breadcrumb">
+    <% content_for :topbar_right do %>
+        <%= link_to( new_admin_product_path, id: 'muscle-add-btn', class: 'btn btn-default btn-sm light fw600 ml10', style: " background-color: #18BC9C; color: #fff") do %>
+        <i class="fa fa-plus pr5"></i> Novo produto
+      <% end %>
+    <% end %>
+    <li class="crumb-active">
+      <span class="glyphicon glyphicon-user mr5"></span>
+      <a href="">Produtos</a>
+      
+    </li>
+  </ol>
+<% end %>
+
+<div class="panel">
+  <div class="panel-body">
+   <table class="table table-hover" id="pro-table" data-source="<%=set_datatable_products_admin_products_path(format: :json) %>"
+        cellspacing="0" width="100%">
+        <thead>        
+          <tr>
+            <th>Nome</th>
+            <th>Lucro</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+  </div>
+</div>
